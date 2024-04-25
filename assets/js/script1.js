@@ -1,5 +1,3 @@
-
-
 function limpiezaDatos() {
   document.querySelector(".errorNombre").innerHTML = "";
   document.querySelector(".errorAsunto").innerHTML = "";
@@ -7,8 +5,6 @@ function limpiezaDatos() {
 
   return limpiezaDatos;
 }
-
-
 
 let form = document.getElementById("formulario");
 form.addEventListener("submit", function (event) {
@@ -25,24 +21,27 @@ form.addEventListener("submit", function (event) {
 
   // verifica si una cadena está compuesta únicamente por caracteres alfabéticos
 
-
   if (textNombre === "" || textAsunto === "" || textMensaje === "") {
     alert("Los campos están vacíos");
-} else if (!/^[a-zA-Z\s]*$/.test(textNombre) || !/^[a-zA-Z\s]*$/.test(textAsunto) || !/^[a-zA-Z\s]*$/.test(textMensaje)) {
+  } else if (
+    !/^[a-zA-Z\s]*$/.test(textNombre) ||
+    !/^[a-zA-Z\s]*$/.test(textAsunto) ||
+    !/^[a-zA-Z\s]*$/.test(textMensaje)
+  ) {
     let errorNombre = document.getElementsByClassName("errorNombre")[0];
     errorNombre.innerHTML = "Ingresa datos válidos para el nombre";
-    
+
     let errorAsunto = document.getElementsByClassName("errorAsunto")[0];
     errorAsunto.innerHTML = "Ingresa datos válidos para el asunto";
-    
+
     let errorMensaje = document.getElementsByClassName("errorMensaje")[0];
     errorMensaje.innerHTML = "Ingresa datos válidos para el mensaje";
-} else {
-    limpiezaDatos();
+  } else {
+    document.querySelector(".errorNombre").innerHTML = "";
+    document.querySelector(".errorAsunto").innerHTML = "";
+    document.querySelector(".errorMensaje").innerHTML = "";
     alert("Gracias por llenar los campos");
-}
-
+  }
 
   return form;
 });
-
